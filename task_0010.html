@@ -4,24 +4,60 @@
 	<meta charset="utf-8">
 	<title>任务十：Flexbox 布局练习</title>
 	<style type="text/css">
-		*{padding:0px;margin}
-		div{
+	*{padding:0px;margin:0px;}
+	#container{
+		display:flex;
+		flex-flow: row wrap;
+		}
+	#container div{
 		width:150px;
 		padding:20px;
-		border:1px solid #foo;
+		margin: auto;		
 		}
 	#block1{
 		height:120px;
+		border:1px solid #FF0000;
 		}
 	#block2{
 		height:100px;
+		border:1px solid #FF0000;
 		}
 	#block3{
 		height:40px;
+		border:1px solid #FF0000;
 		}
 	#block4{
 		height:200px;
+		border:1px solid #3300FF;
 		}
+	/*媒体查询*/
+	@media all and (max-width: 640px) {	
+	#container div{
+		width:150px;
+		padding:20px;
+		margin: 20px auto;		
+		}
+	#block1{
+		height:120px;
+		border:1px solid #FF0000;
+		order:2;
+		}
+	#block2{
+		height:100px;
+		border:1px solid #FF0000;
+		order:3;
+		}
+	#block3{
+		height:40px;
+		border:1px solid #FF0000;
+		order:4;
+		}	
+	#block4{
+			height:200px;
+			border:1px solid #3300FF;
+			order:1;
+		}
+	}
 
 	</style>
 </head>
