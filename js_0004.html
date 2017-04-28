@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+	<script src="F:\jquery-3.1.1.js"></script>
+  </head>
+<body>
+	<input type="text" id="inputBox">
+	<button id="button1">左侧入</button>
+	<button id="button2">右侧入</button>
+	<button id="button3">左侧出</button>
+	<button id="button4">右侧出</button>
+	<div id="list"></div>
+<script type="text/javascript">
+$(function(){	
+	var button1 = $("#button1");
+	var button2 = $("#button2");
+	var button3 = $("#button3");
+	var button4 = $("#button4");
+	var list = $("#list");
+	button1.bind("click",function(){
+		var $div = $("<div></div>");
+		var inputBox = $("#inputBox").val();		
+		//button1.attr("disabled","ture");		
+		/*使用正则表达式验证输入内容？*/
+		if( inputBox!="" && (/-?[1-9]\d*/).test(inputBox)) {		
+			$div.text(inputBox)
+			.css({"background-color":"#0099FF","height":"100px","width":"100px"
+			,"text-align":"center","vertical-align":"middle"
+			,"display":"inline-block","font-size":"20px"
+			,"margin":"20px"})
+			.attr("id","blcok01");					
+			list.prepend($div);
+			}
+		else {alert("Input ERRO!");}
+		})
+	button2.bind("click",function(){		
+		var $div = $("<div></div>");		
+		var inputBox = $("#inputBox").val();
+		//button2.attr("disabled","ture");		
+		if( inputBox!="" && (/-?[1-9]\d*/).test(inputBox)) {		
+			$div.text(inputBox)
+			.css({"background-color":"#0099FF","height":"100px","width":"100px"
+			,"text-align":"center","vertical-align":"middle"
+			,"display":"inline-block","font-size":"20px"
+			,"margin":"20px"})
+			.attr("id","block02");				
+			list.append($div);
+			}
+		else {alert("Input ERRO!");}
+		})
+	button3.bind("click",function(){	
+			$("#list>div:first").remove();
+			//console.log(firstNode);
+			
+			}
+		)
+	button4.bind("click",function(){
+			$("#list>div:last").remove();
+			//console.log(lastNode);
+			
+			}
+		)
+})
+</script>
+</body>
+</html>

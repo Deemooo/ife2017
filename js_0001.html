@@ -21,15 +21,21 @@ $(function(){
   在事件处理函数中
   获取aqi-input输入的值，并显示在aqi-display中
   */
-  
+ /* 
   $("#button").click(function(){
-	var inputValue = $("aqi-input").val();
-	$("#aqi-display").text("inputValue");
+	var inputValue = $("#aqi-input").val();
+	$("#aqi-display").text(inputValue);
 	})
   })
+*/
+var btn = document.getElementById("button");
+var display = document.getElementById("aqi-display");
+var input = document.getElementById("aqi-input");
+btn.onclick = function(){
+display.innerHTML = input.value;
+};
 
-
-
+})();
 </script>
 </body>
 </html>
