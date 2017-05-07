@@ -19,6 +19,7 @@ $(function(){
 	var button3 = $("#button3");
 	var button4 = $("#button4");
 	var list = $("#list");
+	var divClick = $("div");
 	button1.bind("click",function(){
 		var $div = $("<div></div>");
 		var inputBox = $("#inputBox").val();		
@@ -50,18 +51,19 @@ $(function(){
 			}
 		else {alert("Input ERRO!");}
 		})
-	button3.bind("click",function(){	
+	button3.bind("click",function(){			
 			$("#list>div:first").remove();
-			//console.log(firstNode);
-			
+			alert($("#list>div:first").text());				
 			}
 		)
-	button4.bind("click",function(){
+	button4.bind("click",function(){			
 			$("#list>div:last").remove();
-			//console.log(lastNode);
-			
+			alert($("#list>div:last").text());			
 			}
 		)
+	divClick.bind("click",function(event){		
+			event.target.remove();
+			})
 })
 </script>
 </body>

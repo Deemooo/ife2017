@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+	<script src="F:\jquery-3.1.1.js"></script>
+  </head>
+<body>
+	<input type="text" id="inputBox">
+	<button id="button1">左侧入</button>
+	<button id="button2">右侧入</button>
+	<button id="button3">左侧出</button>
+	<button id="button4">右侧出</button>
+	<button id="button5">排序</button>
+	<div id="list"></div>
+<script type="text/javascript">
+$(function(){	
+	//排序算法
+	var button5 = $("#button5");
+	var arr = [11,66,32,14,56];	
+	function bubbleSort(arr) {
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+        for (var j = 0; j < len - 1 - i; j++) {
+            if (arr[j] < arr[j+1]) {        //相邻元素两两对比
+                var temp = arr[j];        //元素交换
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    return arr;
+	}
+	bubbleSort(arr);
+	button5.bind("click",function(){	
+	for(let i=0;i<arr.length;i++){		
+		var $sortBlock = $("<div></div>");
+		//console.log(arr[i]);
+		$sortBlock.text(arr[i])
+		.css({"background-color":"#0099FF","height":"100px","width":"60px"		
+		,"display":"inline-block","margin":"20px"});
+		$sortBlock.height(arr[i]);
+		list.after($sortBlock);
+		}
+	})
+	//按钮动作
+	var button1 = $("#button1");
+	var button2 = $("#button2");
+	var button3 = $("#button3");
+	var button4 = $("#button4");
+	var list = $("#list");
+	var divClick = $("div");	
+	button1.bind("click",function(){
+		var $div = $("<div></div>");
+		var inputBox = $("#inputBox").val();
+		var parseIntInput = parseInt(inputBox);
+		//console.log(typeof(parseIntInput));
+		//button1.attr("disabled","ture");		
+		/*使用正则表达式验证输入内容？*/
+		if( inputBox!="" && (/-?[1-9]\d*/).test(inputBox) && parseIntInput <= 100 && parseIntInput >= 10){		
+			$div.text(inputBox)
+			.css({"background-color":"#0099FF","height":"100px","width":"60px"
+			,"text-align":"center","vertical-align":"middle"
+			,"display":"inline-block","font-size":"1em"
+			,"margin":"20px"})
+			.attr("id","blcok01");
+			var divSum = $("div[id!=list]");
+			if(divSum.length < 10){
+				list.prepend($div);
+				$div.height(parseIntInput);
+				}
+			else {alert("The number of elements added is greater than the specified number");}			
+			}
+		else {alert("Input ERRO!");}
+		})
+	button2.bind("click",function(){		
+		var $div = $("<div></div>");		
+		var inputBox = $("#inputBox").val();
+		var parseIntInput = parseInt(inputBox);
+		//button2.attr("disabled","ture");		
+		if( inputBox!="" && (/-?[1-9]\d*/).test(inputBox) && parseIntInput <= 100 && parseIntInput >= 10){		
+			$div.text(inputBox)
+			.css({"background-color":"#0099FF","height":"100px","width":"60px"
+			,"text-align":"center","vertical-align":"middle"
+			,"display":"inline-block","font-size":"1em"
+			,"margin":"20px"})
+			.attr("id","block02");	
+			var divSum = $("div[id!=list]");
+			if(divSum.length < 10){
+				list.append($div);
+				$div.height(parseIntInput);
+				}
+			else {alert("The number of elements added is greater than the specified number");}			
+			}
+		else {alert("Input ERRO!");}
+		})
+	button3.bind("click",function(){			
+			$("#list>div:first").remove();
+			alert($("#list>div:first").text());				
+			}
+		)
+	button4.bind("click",function(){			
+			$("#list>div:last").remove();
+			alert($("#list>div:last").text());			
+			}
+		)
+	divClick.bind("click",function(event){		
+			event.target.remove();
+			})
+})
+</script>
+</body>
+</html>
