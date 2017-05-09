@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+	<script src="F:\jquery-3.1.1.js"></script>
+  </head>
+<body>
+	<div id="formBlock">
+	<textarea id="textArea"></textarea>
+	<input id="searchInput" type="text">
+	<button id="button1">插入</button>
+	<button id="button2">查询</button>
+	</div>
+<script type="text/javascript">
+$(function(){	
+	var $button1 = $("#button1");
+	var $formBlock = $("#formBlock");
+	$button1.bind("click",function(){
+		/*取值*/
+		var $textArea = $("#textArea").val();	
+		var $searchInput = $("#searchInput").val();
+		//console.log($textArea);
+		var $textAreaArr = $textArea.split(/\s/);
+		//console.log($textAreaArr);
+		/*DOM操作*/
+		for(let i=0;i<$textAreaArr.length;i++){
+			if($textAreaArr[i]!=""){
+				var $div = $("<div></div>");
+				$div.text($textAreaArr[i])
+			.css({"background-color":"#0099FF"
+			,"height":"60px","width":"60px"
+			,"text-align":"center","vertical-align":"middle"
+			,"display":"inline-block","font-size":"20px"
+			,"margin":"20px"});
+				$formBlock.after($div);
+				}
+			else {alert("Check in your content!");}
+			}
+		})
+		/*搜索匹配*/
+		var $button2 = $("#button2");
+		$button2.bind("click",function(){
+		var $searchInput = $("#searchInput").val();
+		var $divSum = $("div[id!=formBlock]");
+
+		//console.log($divSum[0]);
+		//console.log($divSumText);
+		for(let i=0;i<$divSum.length;i++){		
+			var $m = $($divSum[i]);
+			var $divSumText = $m.text();						
+			if($divSumText.indexOf($searchInput) > -1){		
+				$m.css({"background-color":"#CC0000"});				
+				}
+			else $m.css({"background-color":"#0099FF"});}
+		})
+	
+})
+</script>
+</body>
+</html>
