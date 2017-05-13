@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>miniQuery</title>
+  <style>
+  </style>
+</head>
+<body>
+
+
+  <script type="text/javascript">
+	// 实现一个简单的Query function $(selector) 
+// 可以通过id获取DOM对象，通过#标示，例如 $("#adom"); // 返回id为adom的DOM对象
+// 可以通过tagName获取DOM对象，例如 $("a"); // 返回第一个对象
+// 可以通过样式名称获取DOM对象，例如 $(".classa"); // 返回第一个样式定义包含classa的对象
+// 可以通过attribute匹配获取DOM对象，例如 $("[data-log]"); // 返回第一个包含属性data-log的对象
+//$("[data-time=2015]");返回第一个包含属性data-time且值为2015的对象
+// 可以通过简单的组合提高查询便利性，例如 $("#adom .classa"); // 返回id为adom的DOM所包含的所有子节点中，第一个样式定义包含classa的对象
+
+function $(selector){
+	if(selector != null){
+		if(Object.prototype.toString.call(selector) 
+			==='[object String]'){
+			var selArr = selector.replace(/\s/,"")
+			.split("");
+			for(let i=0,len=selArr.length;i<len;i++){
+				switch(selArr[0]){
+					case '#' : var node = document.getElementById("selector");break;
+					case '.' : var node = document.querySelector("selector")[0];break;
+					case '[' : {
+								var loc = selector.indexOf("=");
+								var name = selector.substring(0,loc);
+								if(loc != -1){
+									var nameList = document.getElementsClassName("name");
+								for(let i=0,len=nameList.length;i<len;i++){
+									if(nameList[i].getAttribute("name")){
+										var node = nameList[i];
+											}									
+										}
+								var node = nameList[0];
+									}
+								}break;
+					default : var node = document.getElementsTagName("selector");break;
+					}
+				}
+			}
+		}
+	else {alert("Input Erro!");}
+	}
+
+  </script>
+</body>
+</html>

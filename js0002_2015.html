@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ </head>
+<body>
+<input type="date" id="date2"><button id="start">开始</button>
+<div class="count-down"></div>
+<script>
+
+//界面首先有一个文本输入框，允许按照特定的格式YYYY-MM-DD输入年月日；
+//输入框旁有一个按钮，点击按钮后，计算当前距离输入的日期的00:00:00有多少时间差
+//在页面中显示，距离YYYY年MM月DD日还有XX天XX小时XX分XX秒
+//每一秒钟更新倒计时上显示的数
+//如果时差为0，则倒计时停止
+    document.getElementById("start").onclick=run;
+    function run(){
+            var endtime=new Date(document.getElementById("date2").value);
+            var starttime=Date.now()
+            var time=(endtime.getTime()-starttime)/1000;//毫秒变秒
+            var day=parseInt(time/(60*60*24));//秒变日，下面以此类推；
+            var hours=parseInt(time/(60*60)%24);
+            var min=parseInt(time/60%60);
+            var sec=parseInt(time%60);
+            document.getElementsByClassName("count-down")[0].innerHTML="<span>"+"距离设置时间还有："+day+"天"+hours+"小时"+min+"分钟"+sec+"秒"+"</span>";
+            setTimeout(run,1000);
+             if(time<=0){
+            clearTimeout(run);
+            document.getElementsByClassName("count-down")[0].innerHTML="时间到了";
+        }
+}
+
+</script>
+</body>
+</html>
