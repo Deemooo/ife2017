@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  	<script src="F:\jquery-3.1.1.js"></script>
+  <title>Ajax简单实现</title>
+  <style>
+  </style>
+</head>
+<body>
+
+	<button id="send">Ajax提交</button>
+	<div class="comment">已有评论：</div>
+	<div id="resText"></div>
+
+</body>
+<script>
+
+$(function(){	
+		$("#send").click(function(){
+			$("#resText").load("test.html .para");
+			}
+		)	
+	})
+
+/*
+
+var sumbitBut = document.querySelector("#sumbitBut");
+sumbitBut.onclick = function(){
+	function Ajax(){
+		var xmlHttpReg = null;
+		if(window.ActiveXObject){
+			xmlHttpReg = new Active XObject("Microsoft.XMLHTTP");
+		else if(window.XMLHttpRequest){
+			xmlHttpReg = new XMLHttpRequest();
+			}
+		}
+	xmlHttpReg.open("GET","test.php",true);
+	xmlHttpReg.onreadystatechange = RequestCallBack;
+	xmlHttpReg.send(null);
+	function RequestCallBack(){
+		if(xmlHttpReg.readyState == 4){
+			if(xmlHttpReg.status ==200){
+				document.getElementById("resText").innerHTML = xmlHttpReg.responseText;
+				}
+			}
+		}
+	}
+}
+
+*/
+
+</script>
+</html>

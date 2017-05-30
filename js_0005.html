@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>IFE JavaScript Task 01</title>
 	<script src="F:\jquery-3.1.1.js"></script>
+	<style>
+		#prompt{display:none;color:gray;font-size:0.8em;}
+	</style>
   </head>
 <body>
 	<input type="text" id="inputBox">
@@ -12,6 +15,7 @@
 	<button id="button3">左侧出</button>
 	<button id="button4">右侧出</button>
 	<button id="button5">排序</button>
+	<div id="prompt">请输入10-100间的整数</div>
 	<div id="list"></div>
 <script type="text/javascript">
 $(function(){	
@@ -49,7 +53,12 @@ $(function(){
 	var button3 = $("#button3");
 	var button4 = $("#button4");
 	var list = $("#list");
-	var divClick = $("div");	
+	var divClick = $("div");
+	$("#inputBox").hover(function(){
+		$("#prompt").show();
+		},function(){
+		$("#prompt").hide();
+		});
 	button1.bind("click",function(){
 		var $div = $("<div></div>");
 		var inputBox = $("#inputBox").val();
