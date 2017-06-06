@@ -5,13 +5,13 @@
 <title>任务一：表单（一）单个表单项的检验</title>
 <style type="text/css">
 *{paddig:10px;margin:5px;}
-#prompt{display:none;}
+.prompt{display:none;}
 </style>
 </head>
 
 <body>
 <p><span>手机号码</span><input type="text" id="cellPhoneNum"></input><button>验证</button></p>
-	<p id="prompt">请输入字符数为4~16位</p>
+	<p class="prompt">请输入字符数为4~16位</p>
 <p><span>密码</span><input type="text" id="password"></input><button>验证</button></p>
 	<p class="prompt">请输入不重复的英文字母、数字、英文符号</p>
 <p><span>用户名</span><input type="text" id="name"></input><button>验证</button></p>
@@ -22,23 +22,18 @@
 1.字符数为4~16位
 2.每个英文字母、数字、英文符号长度为1
 3.每个汉字，中文符号长度为2*/
+(function(){
+
 var cellPhoneNum = document.getElementById("cellPhoneNum");
 var password = document.getElementById("password");
 var name = document.getElementById("name");
-
-document.getElementById("cellPhoneNum").onmouseover = function(this){
-		function showPrompt(){
-		document.getElementById("prompt")
-		.style.display='block';
-		}
+var prompt = document.getElementsByClassName("prompt");
+cellPhoneNum.onmouseover = function (){
+	prompt[0].innerHTML = "block";
 	}
-	/*
-document.getElementsByTagName("input").onmouseout = function(){
-		hidePrompt();
-		};
-function hidePrompt(){
-	document.getElementsByClassName("prompt").style.visibility='visible';
-	}*/
+
+})
+
 </script>
 </body>
 </html>
