@@ -10,28 +10,48 @@
 </head>
 
 <body>
-<p><span>手机号码</span><input type="text" id="cellPhoneNum"></input><button>验证</button></p>
-	<p class="prompt">请输入字符数为4~16位</p>
-<p><span>密码</span><input type="text" id="password"></input><button>验证</button></p>
-	<p class="prompt">请输入不重复的英文字母、数字、英文符号</p>
-<p><span>用户名</span><input type="text" id="name"></input><button>验证</button></p>
-	<p class="prompt">请输入汉字，中文符号长度为2</p>
+<p><span>手机号码</span><input type="text" id="cellPhoneNum"></input><button id="test1">验证</button></p>
+	<p id="prompt1" class="prompt">请输入字符数为4~16位</p>
+<p><span>密码</span><input type="text" id="password"></input><button id="test2">验证</button></p>
+	<p id="prompt2" class="prompt">请输入不重复的英文字母、数字、英文符号</p>
+<p><span>用户名</span><input type="text" id="name"></input><button id="test3">验证</button></p>
+	<p id="prompt3" class="prompt">请输入汉字，中文符号长度为2</p>
 <script type="text/javascript">
-/*如示例图中所示，在页面中实现一个输入框与按钮，要求点击验证按钮后，对输入框中内容进行格式校验，并在其下方显示校验结果
+/*
+如示例图中所示，在页面中实现一个输入框与按钮，要求点击验证按钮后，对输入框中内容进行格式校验，并在其下方显示校验结果
 校验规则：
 1.字符数为4~16位
 2.每个英文字母、数字、英文符号长度为1
-3.每个汉字，中文符号长度为2*/
+3.每个汉字，中文符号长度为2
+*/
 (function(){
-
+/*输入框*/
 var cellPhoneNum = document.getElementById("cellPhoneNum");
 var password = document.getElementById("password");
 var name = document.getElementById("name");
-var prompt = document.getElementsByClassName("prompt");
-cellPhoneNum.onmouseover = function (){
-	prompt[0].innerHTML = "block";
-	}
+/*按钮*/
+var test1 = document.getElementsById("test1");
+var test2 = document.getElementsById("test2");
+var test3 = document.getElementsById("test3");
+/*提示*/
+var prompt1 = document.getElementsById("prompt1");
+var prompt2 = document.getElementsById("prompt2");
+var prompt3 = document.getElementsById("prompt3");
 
+test1.onclick = testCellPhone;
+test2.onclick = testPassword;
+test3.onclick = testName;
+function testCellPhone(){
+	if(/\S{4,16}/.test(cellPhoneNum.value())){
+		/*创建正确提示*/
+	prompt1.innerHTML = "输入正确!"
+	prompt1.style.display = "block";
+		}
+	else {	
+		/*创建错误提示*/
+	prompt1.innerHTML = "输入错误!"
+		}
+	}
 })
 
 </script>
