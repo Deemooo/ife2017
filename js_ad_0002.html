@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表单（二）多个表单项的动态校验</title>
+<style type="text/css">
+* {
+  paddig: 10px;
+  margin: 5px;
+}
+.prompt {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+<p><span>手机号码</span>
+  <input type="text" id="cellPhoneNum">
+  </input>
+  <button id="test1">验证</button>
+</p>
+<p id="prompt1" class="prompt">请输入4~16位字符!</p>
+<p><span>密码</span>
+  <input type="text" id="password">
+  </input>
+  <button id="test2">验证</button>
+</p>
+<p id="prompt2" class="prompt">请输入不重复的英文字母、数字、英文符号!</p>
+<p><span>用户名</span>
+  <input type="text" id="name">
+  </input>
+  <button id="test3">验证</button>
+</p>
+<p id="prompt3" class="prompt">请输入长度为2的汉字或者中文符号!</p>
+<script type="text/javascript">
+/*
+表单获得焦点时，下方显示表单填写规则
+表单失去焦点时校验表单内容
+校验结果正确时，表单边框显示绿色，并在下方显示验证通过的描述文字
+校验结果错误时，表单边框显示红色，并在下方显示验证错误的描述文字
+点击提交按钮时，对页面中所有输入进行校验，校验结果显示方式同上。若所有表单校验通过，弹窗显示“提交成功”，否则显示“提交失败”
+*/
+
+/*输入框*/
+var cellPhoneNum = document.getElementById("cellPhoneNum");
+var password = document.getElementById("password");
+var name = document.getElementById("name");
+/*按钮*/
+var test1 = document.getElementById("test1");
+var test2 = document.getElementById("test2");
+var test3 = document.getElementById("test3");
+/*提示*/
+var prompt1 = document.getElementById("prompt1");
+var prompt2 = document.getElementById("prompt2");
+var prompt3 = document.getElementById("prompt3");
+
+/*获得焦点*/
+cellPhoneNum.onfocus = onfocusPrompt1;
+password.onfocus = onfocusPrompt2;
+name.onfocus = onfocusPrompt3;
+/*失去焦点*/
+cellPhoneNum.onblur = onblurPrompt1;
+password.onblur = onblurPrompt2;
+name.onblur = onblurPrompt3;
+
+/*验证电话号码*/
+function onfocusPrompt1(){
+	prompt1.style.display = "block";
+	prompt1.style.fontSize = "0.8em";
+	}
+function onblurPrompt1(){
+		if(/\S{4,16}/.test(cellPhoneNum.value)){
+		/*创建正确提示*/
+	prompt1.innerHTML = "输入正确!"
+	prompt1.style.display = "block";
+	prompt1.style.color = "green";
+	cellPhoneNum.style.borderColor = "blue";
+	prompt1.style.fontSize = "0.8em";
+		}
+	else {	
+		/*创建错误提示*/
+	prompt1.innerHTML = "请输入4~16位字符!"
+	prompt1.style.display = "block";
+	prompt1.style.color = "red";
+	cellPhoneNum.style.borderColor = "red";
+	prompt1.style.fontSize = "0.8em";
+		}
+	}
+/*验证密码*/
+function onfocusPrompt2(){
+	prompt2.style.display = "block";
+	prompt2.style.fontSize = "0.8em";
+	}
+function onblurPrompt2(){
+	if(password.value!=""){
+		var arr = password.value.split("");
+		var counter = 0;
+		for(let i=0,len=arr.length;i<len;i++){
+			if(arr[i]===arr[i+1]){			
+				counter++;
+				}
+			else { continue ;}			
+			}		
+		if(counter === 0){
+		/*创建正确提示*/
+	prompt2.innerHTML = "输入正确!"
+	prompt2.style.display = "block";
+	prompt2.style.color = "green";
+	password.style.borderColor = "blue";
+	prompt2.style.fontSize = "0.8em";
+			}
+		else {
+		/*创建错误提示*/
+	prompt2.innerHTML = "请输入不重复的英文字母、数字、英文符号!"
+	prompt2.style.display = "block";
+	prompt2.style.color = "red";
+	password.style.borderColor = "red";
+	prompt2.style.fontSize = "0.8em";
+			}
+		}
+	}
+/*验证名字*/
+function onfocusPrompt3(){
+	prompt3.style.display = "block";
+	prompt3.style.fontSize = "0.8em";
+	}	
+function onblurPrompt3(){
+	if(/^[\u2E80-\u9FFF]+$/.test(name.value)){
+		/*创建正确提示*/
+	prompt3.innerHTML = "输入正确!"
+	prompt3.style.display = "block";
+	prompt3.style.color = "green";
+	name.style.borderColor = "blue";
+	prompt3.style.fontSize = "0.8em";
+		}
+	else{
+		/*创建错误提示*/
+	prompt3.innerHTML = "请输入长度为2的汉字或者中文符号!"
+	prompt3.style.display = "block";
+	prompt3.style.color = "red";
+	name.style.borderColor = "red";
+	prompt3.style.fontSize = "0.8em";
+		}
+	}
+
+
+</script>
+</body>
+</html>
