@@ -28,7 +28,7 @@
 </p>
 <p id="prompt2" class="prompt">请输入不重复的英文字母、数字、英文符号!</p>
 <p><span>用户名</span>
-  <input type="text" id="name">
+  <input type="text" id="name1">
   </input>
   <button id="test3">验证</button>
 </p>
@@ -45,7 +45,7 @@
 /*输入框*/
 var cellPhoneNum = document.getElementById("cellPhoneNum");
 var password = document.getElementById("password");
-var name = document.getElementById("name");
+var name1 = document.getElementById("name1");
 /*按钮*/
 var test1 = document.getElementById("test1");
 var test2 = document.getElementById("test2");
@@ -58,11 +58,11 @@ var prompt3 = document.getElementById("prompt3");
 /*获得焦点*/
 cellPhoneNum.onfocus = onfocusPrompt1;
 password.onfocus = onfocusPrompt2;
-name.onfocus = onfocusPrompt3;
+name1.onfocus = onfocusPrompt3;
 /*失去焦点*/
 cellPhoneNum.onblur = onblurPrompt1;
 password.onblur = onblurPrompt2;
-name.onblur = onblurPrompt3;
+name1.onblur = onblurPrompt3;
 
 /*验证电话号码*/
 function onfocusPrompt1(){
@@ -126,12 +126,12 @@ function onfocusPrompt3(){
 	prompt3.style.fontSize = "0.8em";
 	}	
 function onblurPrompt3(){
-	if(/^[\u2E80-\u9FFF]+$/.test(name.value)){
+	if(/^[\u2E80-\u9FFF]+$/.test(name1.value)){
 		/*创建正确提示*/
 	prompt3.innerHTML = "输入正确!"
 	prompt3.style.display = "block";
 	prompt3.style.color = "green";
-	name.style.borderColor = "blue";
+	name1.style.borderColor = "blue";
 	prompt3.style.fontSize = "0.8em";
 		}
 	else{
@@ -139,7 +139,7 @@ function onblurPrompt3(){
 	prompt3.innerHTML = "请输入长度为2的汉字或者中文符号!"
 	prompt3.style.display = "block";
 	prompt3.style.color = "red";
-	name.style.borderColor = "red";
+	name1.style.borderColor = "red";
 	prompt3.style.fontSize = "0.8em";
 		}
 	}
