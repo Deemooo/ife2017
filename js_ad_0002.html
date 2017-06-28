@@ -22,7 +22,7 @@
 </p>
 <p id="prompt1" class="prompt">请输入4~16位字符!</p>
 <p><span>密码</span>
-  <input type="text" id="password">
+  <input type="text" id="password1">
   </input>
   <button id="test2">验证</button>
 </p>
@@ -33,6 +33,7 @@
   <button id="test3">验证</button>
 </p>
 <p id="prompt3" class="prompt">请输入长度为2的汉字或者中文符号!</p>
+<button id="test4">提交</button>
 <script type="text/javascript">
 /*
 表单获得焦点时，下方显示表单填写规则
@@ -44,12 +45,13 @@
 
 /*输入框*/
 var cellPhoneNum = document.getElementById("cellPhoneNum");
-var password = document.getElementById("password");
+var password1 = document.getElementById("password1");
 var name1 = document.getElementById("name1");
 /*按钮*/
 var test1 = document.getElementById("test1");
 var test2 = document.getElementById("test2");
 var test3 = document.getElementById("test3");
+var test4 = document.getElementById("test4");
 /*提示*/
 var prompt1 = document.getElementById("prompt1");
 var prompt2 = document.getElementById("prompt2");
@@ -57,11 +59,11 @@ var prompt3 = document.getElementById("prompt3");
 
 /*获得焦点*/
 cellPhoneNum.onfocus = onfocusPrompt1;
-password.onfocus = onfocusPrompt2;
+password1.onfocus = onfocusPrompt2;
 name1.onfocus = onfocusPrompt3;
 /*失去焦点*/
 cellPhoneNum.onblur = onblurPrompt1;
-password.onblur = onblurPrompt2;
+password1.onblur = onblurPrompt2;
 name1.onblur = onblurPrompt3;
 
 /*验证电话号码*/
@@ -93,8 +95,8 @@ function onfocusPrompt2(){
 	prompt2.style.fontSize = "0.8em";
 	}
 function onblurPrompt2(){
-	if(password.value!=""){
-		var arr = password.value.split("");
+	if(password1.value!=""){
+		var arr = password1.value.split("");
 		var counter = 0;
 		for(let i=0,len=arr.length;i<len;i++){
 			if(arr[i]===arr[i+1]){			
@@ -107,7 +109,7 @@ function onblurPrompt2(){
 	prompt2.innerHTML = "输入正确!"
 	prompt2.style.display = "block";
 	prompt2.style.color = "green";
-	password.style.borderColor = "blue";
+	password1.style.borderColor = "blue";
 	prompt2.style.fontSize = "0.8em";
 			}
 		else {
@@ -115,9 +117,17 @@ function onblurPrompt2(){
 	prompt2.innerHTML = "请输入不重复的英文字母、数字、英文符号!"
 	prompt2.style.display = "block";
 	prompt2.style.color = "red";
-	password.style.borderColor = "red";
+	password1.style.borderColor = "red";
 	prompt2.style.fontSize = "0.8em";
 			}
+		}
+	else {
+		/*创建错误提示*/
+	prompt2.innerHTML = "请输入不重复的英文字母、数字、英文符号!"
+	prompt2.style.display = "block";
+	prompt2.style.color = "red";
+	password1.style.borderColor = "red";
+	prompt2.style.fontSize = "0.8em";
 		}
 	}
 /*验证名字*/
@@ -142,8 +152,29 @@ function onblurPrompt3(){
 	name1.style.borderColor = "red";
 	prompt3.style.fontSize = "0.8em";
 		}
-	}
 
+	}
+/*单项内容验证*/
+test1.onclick = function test1(){onblurPrompt1();};
+test2.onclick = function test2(){onblurPrompt2();};
+test3.onclick = function test3(){onblurPrompt3();};
+/*验证所有输入内容*/
+test4.onclick = function testAll(){
+	onblurPrompt1();onblurPrompt2();onblurPrompt3();
+	var  count = 0;
+	var arrPrompt = document.getElementsByClassName("prompt");
+	for(let i=0,len=arrPrompt.length;i<len;i++){
+		if(arrPrompt[i].innerHTML!="输入正确!"){
+			count++;
+			}
+		else { continue; }
+		}
+	if(count!=0){		
+		alert("提交失败！");
+		}
+	else { alert("提交成功！");}
+		
+	}
 
 </script>
 </body>
