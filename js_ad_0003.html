@@ -19,17 +19,15 @@
 <div id="block1">
 <a>学校</a>
 	<select id="city">
-		<option value="beijing">北京</option>
-		<option value="shanghai">上海</option>
-		<option value="guangzhou">广州</option>		
+		<option value="0">请选择城市</option>		
+		<option id="beijing">北京</option>
+		<option id="shanghai">上海</option>
+		<option id="guangzhou">广州</option>			
 	</select>
 	<select id="school">
-		<option>北京大学</option>
-		<option>复旦大学</option>
-		<option>中山大学</option>		
+		<option value="0">请选择大学</option>	
 	</select>
 	</div>
-
 	<div id="block2">
 	<a>就业单位</a><input type="text" id="EmpUnit"></input>
 	</div>
@@ -51,6 +49,19 @@ nonStu.onclick = function displaySch(){
 	block1.style.display = "none";
 	block2.style.display = "block";
 	}
+/*表格联动*/
+var cityList = document.getElementById("city");
+console.log(cityList[1]);
+var schoolList = document.getElementById("school");
+console.log(school[0]);
+var schoolArr = ['北京大学','复旦大学','中山大学'];
+cityList.onchange = function selectUn(){
+var i = 0;
+var selectSch = schoolArr[cityList.selectedIndex-1];
+schoolList[i++] = new Option(selectSch,selectSch);
+}
+
+
 </script>
 </body>
 </html>
