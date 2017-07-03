@@ -4,123 +4,129 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>任务四：听指令的小方块（一）</title>
 <style type="text/css">
-*{padding:0px;margin:0px;}
-body{width:500px;height:800px;position:relative;overflow:auto;}
-#xLine{
-	position:relative;
-	top:10px;
-	left:50px;
-	width:300px;
-	height:52px;
-	overflow:auto;
-	
-	}
-#yLine{
-	position:absolute;
-	top:60px;
-	left:0px;
-	width:52px;
-	height:300px;
-	overflow:auto;
-	
-	}
-#xLine > a{
-	display:inline-block;
-	width:52px;
-	height:52px;
-	font-size:1.6em;
-	text-align:center;
-	vertical-align:middle;
-	}
-#yLine > a{
-	display:block;
-	width:52px;
-	height:52px;
-	font-size:1.6em;
-	text-align:center;
-	vertical-align:middle;
-	}
-#tableRoo{
-	border:2px solid black;
-	position:relative;
-	top:0px;
-	left:50px;
-	border-collapse: collapse;
-	}
-#tableRoo td{
-	width:50px;
-	height:50px;
-	border:1px solid gray;
-	}
-#boxGo{
-	width:50px;
-	height:40px;
-	background-color:red;
-	border-top:10px solid blue;
-	position:absolute;
-	top:156px;
-	left:154px;	
-	}
-#actInp{
-	margin:10px;
-	position:relative;
-	top:0px;
-	left:40px;
-	width:190px;
-	}
-#sumbit{
-	position:relative;
-	top:0px;
-	left:50px;
-	width:40px;
-	border-radius:4px;
-
-	}
+* {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  width: 500px;
+  height: 800px;
+  position: relative;
+  overflow: auto;
+}
+#xLine {
+  position: relative;
+  top: 10px;
+  left: 50px;
+  width: 300px;
+  height: 52px;
+  overflow: auto;
+}
+#yLine {
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 52px;
+  height: 300px;
+  overflow: auto;
+}
+#xLine > a {
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+}
+#yLine > a {
+  display: block;
+  width: 52px;
+  height: 52px;
+  font-size: 1.6em;
+  text-align: center;
+  vertical-align: middle;
+}
+#tableRoo {
+  border: 2px solid black;
+  position: relative;
+  top: 0px;
+  left: 50px;
+  border-collapse: collapse;
+}
+#tableRoo td {
+  width: 50px;
+  height: 50px;
+  border: 1px solid gray;
+}
+#boxGo {
+  width: 50px;
+  height: 40px;
+  background-color: red;
+  border-top: 10px solid blue;
+  position: absolute;
+  top: 156px;
+  left: 154px;
+}
+#actInp {
+  margin: 10px;
+  position: relative;
+  top: 0px;
+  left: 40px;
+  width: 190px;
+}
+#sumbit {
+  position: relative;
+  top: 0px;
+  left: 50px;
+  width: 40px;
+  border-radius: 4px;
+}
 </style>
 </head>
 <body>
 <div id="xLine"><a>1</a><a>2</a><a>3</a><a>4</a><a>5</a></div>
 <div id="yLine"><a>1</a><a>2</a><a>3</a><a>4</a><a>5</a></div>
 <table id="tableRoo">
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 <div id="boxGo"></div>
-<input type="text" id="actInp"></input><button id="sumbit">执行</button>
+<input type="text" id="actInp">
+</input>
+<button id="sumbit">执行</button>
 <script type="text/javascript">
 /*
 如图，实现一个类似棋盘的格子空间，每个格子用两个数字可以定位，一个红正方形的DOM在这个空间内，正方形中的蓝色边表示这是他的正面，有一个input输入框
@@ -134,43 +140,33 @@ TB：向右转（旋转180度）
 var boxGo = document.getElementById("boxGo");
 var actInp = document.getElementById("actInp");
 var sumbit = document.getElementById("sumbit");
+var i = 0;
 sumbit.onclick = function boxAct(){
-	if(actInp.value!=""){
-		var i = 0;
+	if(actInp.value!=""){		
 		switch (actInp.value.toUpperCase()){
 		//旋转的量，用弧度表示。正值表示顺时针方向旋转，负值表示逆时针方向旋转。
 			case "TL" : 
 				i--;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';
+				console.log(i);
 				break;
 			case "TR" :
 				i++;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';
+				console.log(i);
 				break;
 			case "TB" : 
 				i-=2;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';
+				console.log(i);
 			break;
-			case "Go" :
+			case "Go" : {
 				var dir = Math.abs(i % 4);
-				var left = Number(qizi.style.left.replace('px', ''));
-				var top = Number(qizi.style.top.replace('px', ''));
+				var left = Number(boxGo.style.left.replace('px', ''));
+				var top = Number(boxGo.style.top.replace('px', ''));
 				for(let count=0;count<3;count++){
-					if(dir===0){
-						if (top >= 45) {
-						top -= 45;
-						boxGo.style.top = top + 'px';
-						}
-					if(dir===1){
-						if (left >= 45) {
-						left -= 45;
-						boxGo.style.left = left + 'px';
-							}
-						}			
-					if(dir===2){
-						}
-					}
 				
 			
 			}
 		alert("移动不可超出棋盘！！！");
+		}
 		break;
 	}
 	
