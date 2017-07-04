@@ -146,27 +146,47 @@ sumbit.onclick = function boxAct(){
 		switch (actInp.value.toUpperCase()){
 		//旋转的量，用弧度表示。正值表示顺时针方向旋转，负值表示逆时针方向旋转。
 			case "TL" : 
-				i--;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';
-				console.log(i);
+				i--;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';				
 				break;
 			case "TR" :
-				i++;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';
-				console.log(i);
+				i++;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';				
 				break;
 			case "TB" : 
-				i-=2;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';
-				console.log(i);
+				i-=2;boxGo.style.transform = 'rotate(' + 90 * i + 'deg)';				
 			break;
-			case "Go" : {
-				var dir = Math.abs(i % 4);
-				var left = Number(boxGo.style.left.replace('px', ''));
+			case "GO" : 
+				var direction = Math.abs(i % 4);
+				console.log(direction);				
+				/*
+				var left = Number(boxGo.style.left.replace('px', ''));				
 				var top = Number(boxGo.style.top.replace('px', ''));
-				for(let count=0;count<3;count++){
-				
-			
-			}
-		alert("移动不可超出棋盘！！！");
-		}
+				*/
+				var left = boxGo.offsetLeft;				
+				var top = boxGo.offsetTop;
+				console.log(top);console.log(left);		
+				if(top>=56 && top <= 252 && left>=54 && left<=252){
+					if(direction===1 && i>0){
+						boxGo.style.left = left + 51 +"px";
+						}
+					else if(direction===1 && i<0){
+						boxGo.style.left = left - 51 +"px";
+						}
+					else if(direction===3 && i>0){
+						boxGo.style.left = left - 51 +"px";
+						}
+					else if(direction===3 && i<0){
+						boxGo.style.left = left + 51 +"px";
+						}
+					else if(direction===2){
+						boxGo.style.top = top + 51 +"px";
+						}
+					else if(direction===0){
+						boxGo.style.top = top - 51 +"px";
+						}
+					else {alert("输入错误！！！");}
+					}
+				else {alert("请勿超出边界！！！");}	
+		
 		break;
 	}
 	
