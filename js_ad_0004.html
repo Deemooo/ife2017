@@ -64,8 +64,8 @@ body {
   background-color: red;
   border-top: 10px solid blue;
   position: absolute;
-  top: 156px;
-  left: 154px;
+  top: 155px;
+  left: 153px;
 }
 #actInp {
   margin: 10px;
@@ -163,25 +163,31 @@ sumbit.onclick = function boxAct(){
 				*/
 				var left = boxGo.offsetLeft;				
 				var top = boxGo.offsetTop;
-				console.log(top);console.log(left);		
-				if(top>=56 && top <= 252 && left>=54 && left<=252){
+				/*界定边界及棋子每步所跨距离，未精细完成*/				
+				if(top>=54 && top <= 255 && left>=54 && left<=255){
 					if(direction===1 && i>0){
 						boxGo.style.left = left + 51 +"px";
+						console.log(top);console.log(left);	
 						}
 					else if(direction===1 && i<0){
-						boxGo.style.left = left - 51 +"px";
+						boxGo.style.left = left - 50 +"px";
+						console.log("top:"+top);console.log("left:"+left);console.log("dir:"+direction);
 						}
 					else if(direction===3 && i>0){
-						boxGo.style.left = left - 51 +"px";
+						boxGo.style.left = left - 50 +"px";
+						console.log("top:"+top);console.log("left:"+left);console.log("dir:"+direction);
 						}
 					else if(direction===3 && i<0){
-						boxGo.style.left = left + 51 +"px";
+						boxGo.style.left = left + 50 +"px";
+						console.log("top:"+top);console.log("left:"+left);console.log("dir:"+direction);
 						}
 					else if(direction===2){
-						boxGo.style.top = top + 51 +"px";
+						boxGo.style.top = top + 50 +"px";
+						console.log("top:"+top);console.log("left:"+left);console.log("dir:"+direction);
 						}
 					else if(direction===0){
-						boxGo.style.top = top - 51 +"px";
+						boxGo.style.top = top - 50 +"px";
+						console.log("top:"+top);console.log("left:"+left);console.log("dir:"+direction);
 						}
 					else {alert("输入错误！！！");}
 					}
