@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/demo/demo.css">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+
+		<h2>Complex Layout</h2>
+		<p>This sample shows how to create a complex layout.</p>
+		<div class="easyui-layout" style="width: 700px;height: 500px;">
+			<div data-options="region:'north'" style="height: 50px;"></div>
+			<div data-options="region:'south',split:true" style="height: 50px;"></div>
+			<div data-options="region:'west'" title="West" style="width: 100px;">
+				<div class="easyui-accordion">
+					<div title="title1" style="height: 100px;">
+						<p>content1</p>
+					</div>
+					<div title="title2" selected="true" style="height: 100px;">
+						<p>content2</p>
+					</div>
+					<div title="title3" style="height: 100px;">
+						<p>content3</p>
+					</div>
+				</div>
+			</div>
+			<div data-options="region:'east'" title="East" style="width: 200px;">				
+				<ul class="easyui-tree">			
+
+				</ul>
+			</div>
+			<div data-options="region:'center'" title="Main title"></div>
+		</div>
+
+	</body>
+
+</html>
